@@ -1,0 +1,34 @@
+Netgen Push extension installation instructions
+
+Requirements
+============
+
+    * eZ Publish 4.3+
+    * eZ JSCore
+
+Installation
+============
+
+ 1. Unpack/unzip
+
+    Unpack the downloaded package into the 'extension' directory of your eZ Publish installation.
+
+ 2. Activate extension
+
+    Activate the extension by using the admin interface ( Setup -> Extensions ) or by
+    prepending ngpush to ActiveExtensions[] in settings/override/site.ini.append.php:
+
+    [ExtensionSettings]
+    ActiveExtensions[]=ngpush
+
+ 3. Regenerate autoload array
+
+    Run the following from your eZ Publish root folder
+	
+    php bin/php/ezpgenerateautoloads.php --extension
+
+    Or go to Setup -> Extensions and click the "Regenerate autoload arrays" button
+
+ 4. Clear caches
+
+    Clear template, override and ini caches (from admin 'Setup' tab or from command line).

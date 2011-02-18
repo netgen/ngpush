@@ -1,0 +1,8 @@
+License: See, LICENSE
+Installation: See, doc/INSTALL
+
+This extension implements framework and interface for pushing eZ Publish content to the selected external websites.
+
+Currently implemented channels:
+
+Facebook Graph API and OAuth, Twitter REST API and OAuth.

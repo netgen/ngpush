@@ -1,0 +1,38 @@
+div#ngpush-list label {font-weight:normal; padding:0; margin-bottom:0.2em;}
+div#ngpush-list div.status {float:right; width:205px; padding-left:15px;}
+div#ngpush-list form {margin-right:226px;}
+div#ngpush-list div.indicator {float:left;}
+div#ngpush-list div.indicator, div#ngpush-list div.indicator div {width:50px; height:50px;}
+div#ngpush-list div.message {clear:both;}
+
+div#ngpush-list div.indicator div.indicator-inactive {background:url(../images/info.png) center center no-repeat;}
+div#ngpush-list div.indicator div.indicator-active {background:url(../images/ajax-loader.gif) center center no-repeat;}
+div#ngpush-list div.indicator div.indicator-error {background:url(../images/error.png) center center no-repeat;}
+div#ngpush-list div.indicator div.indicator-ok {background:url(../images/success.png) center center no-repeat;}
+
+
+div#ngpush-list select, div#ngpush-list input, div#ngpush-list textarea {font-size:1em;}
+div#ngpush-list textarea {width:100%; margin:0;}
+
+
+form p:first-child {margin-top:0;}
+form p:last-child {margin-bottom:0;}
+div#ngpush-list table.ngpush-block thead th.icon {width:23px; padding-left:6px;}
+div#ngpush-list table.ngpush-block tbody td {padding:0;}
+
+
+
+div#ngpush-list .ngpush-block {margin-bottom:10px;}
+div#ngpush-list .ngpush-block th {cursor:pointer;}
+div#ngpush-list .ngpush-block div.account-body {height:auto; padding:15px;}
+
+
+div#ngpush-list .maxlength span {color:#cc0000; font-weight:bold;}
+
+div#ngpush-list div.status {}
+
+
+.ngpush-block label input[type=checkbox] {display:none;}
+
+
+

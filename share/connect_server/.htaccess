@@ -1,0 +1,7 @@
+Options +FollowSymlinks
+
+RewriteEngine On
+#RewriteRule ^(.+\.php)/([^?]+)(.*)$ /$1?rdt=$2$3 [R=301,QSA,L]
+RewriteRule ^redirect\.php/([^/]+)/([^?]+)(.*)$ /redirect.php?admin=$1&block=$2 [R=301,QSA,L]
+
+DirectoryIndex index.html
