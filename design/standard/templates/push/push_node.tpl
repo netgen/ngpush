@@ -1,3 +1,4 @@
+{ezscript_require(array('ezjsc::jquery', 'ezjsc::jqueryio'))}
 <h1 class="context-title">Netgen Push - {$node.name} - [{$node.class_name}]</h1>
 
 {def
