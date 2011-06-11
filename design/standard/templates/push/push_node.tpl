@@ -57,7 +57,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 				<tbody>
 					<tr>
 						<td colspan="2">
-							<div class="account-body float-break"{if $active_blocks|contains($entry)|not} style="display:none;"{/if}>
+							<div class="account-body float-break{if $active_blocks|contains($entry)} account-body-active{/if}">
 								<div class="status float-break">
 									<div class="indicator"><div class="indicator-inactive"></div></div>
 									<div class="message">{"Waiting..."|i18n("ngpush/status")}</div>
@@ -117,7 +117,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 				<tbody>
 					<tr>
 						<td colspan="2">
-							<div class="account-body float-break"{if $active_blocks|contains($entry)|not} style="display:none;"{/if}>
+							<div class="account-body float-break{if $active_blocks|contains($entry)} account-body-active{/if}">
 								<div class="status float-break">
 									<div class="indicator"><div class="indicator-inactive"></div></div>
 									<div class="message">{"Waiting..."|i18n("ngpush/status")}</div>

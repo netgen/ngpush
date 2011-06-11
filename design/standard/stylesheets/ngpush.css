@@ -24,7 +24,8 @@ div#ngpush-list table.ngpush-block tbody td {padding:0;}
 
 div#ngpush-list .ngpush-block {margin-bottom:10px;}
 div#ngpush-list .ngpush-block th {cursor:pointer;}
-div#ngpush-list .ngpush-block div.account-body {height:auto; padding:15px;}
+div#ngpush-list .ngpush-block div.account-body {height:auto; padding:15px; display:none;}
+div#ngpush-list .ngpush-block div.account-body-active {display:block;}
 
 
 div#ngpush-list .maxlength span {color:#cc0000; font-weight:bold;}
@@ -33,6 +34,3 @@ div#ngpush-list div.status {}
 
 
 .ngpush-block label input[type=checkbox] {display:none;}
-
-
-

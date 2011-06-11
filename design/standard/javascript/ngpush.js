@@ -1,21 +1,21 @@
-jQuery(document).ready(function(){
+jQuery(document).ready(function($){
 
 //
 
-jQuery("#ngpush-list textarea[class^='maxlength']").keyup(function(){maxlength(this);});
-jQuery("#ngpush-list textarea[class^='maxlength']").each(function(){maxlength(this);});
+$("#ngpush-list textarea[class^='maxlength']").keyup(function(){maxlength(this);});
+$("#ngpush-list textarea[class^='maxlength']").each(function(){maxlength(this);});
 
 
-var bitly_login = jQuery('#ngpush-bitly-login').val();
-var bitly_apikey = jQuery('#ngpush-bitly-apikey').val();
-var node_url = jQuery('#ngpush-node-url-full').val();
+var bitly_login = $('#ngpush-bitly-login').val();
+var bitly_apikey = $('#ngpush-bitly-apikey').val();
+var node_url = $('#ngpush-node-url-full').val();
 
-//jQuery.getJSON('http://api.bit.ly/v3/shorten?login=' + bitly_login + '&apiKey=' + bitly_apikey + '&uri=' + node_url + '&format=json',
+//$.getJSON('http://api.bit.ly/v3/shorten?login=' + bitly_login + '&apiKey=' + bitly_apikey + '&uri=' + node_url + '&format=json',
 //	function(data) {
 //		console.log(data);
 //	});
 
-jQuery.ajax({
+$.ajax({
 	type: "GET",
 	url: 'http://api.bit.ly/v3/shorten?login=' + ngpush_bitly_login + '&apiKey=' + ngpush_bitly_apikey + '&uri=' + ngpush_node_url_full + '&format=json',
 	dataType: "jsonp",
@@ -24,9 +24,9 @@ jQuery.ajax({
 	complete: function(xhr, status) {}
 });
 
-jQuery('input.insert-link').click(function(){
-	var url = (jQuery(this).attr('name') == 'short' ? ngpush_node_url_short : ngpush_node_url_full);
-	var textarea = jQuery(this).parents('.ngpush-block').find('textarea').get(0);
+$('input.insert-link').click(function(){
+	var url = ($(this).attr('name') == 'short' ? ngpush_node_url_short : ngpush_node_url_full);
+	var textarea = $(this).parents('.ngpush-block').find('textarea').get(0);
 	var startPos = textarea.selectionStart;
 	var endPos = textarea.selectionEnd;
 	textarea.value = textarea.value.substring(0, startPos) + url + textarea.value.substring(endPos, textarea.value.length);
@@ -34,30 +34,30 @@ jQuery('input.insert-link').click(function(){
 	maxlength(textarea);
 });
 
-jQuery('#ngpush-list form input[type=reset]').click(function(e){
+$('#ngpush-list form input[type=reset]').click(function(e){
 	e.preventDefault();
-	jQuery(this).parents('form').get(0).reset();
-	jQuery(this).parents('form').find('textarea.maxlength').each(function(){maxlength(jQuery(this).get(0));});
+	$(this).parents('form').get(0).reset();
+	$(this).parents('form').find('textarea.maxlength').each(function(){maxlength($(this).get(0));});
 });
 
-jQuery('.ngpush-block').each(function(){
-	var id = jQuery(this).attr('id');
-	jQuery(this).find('th').click(function(){
-		jQuery('#' + id).find('.account-body').toggle().toggleClass('active');
+$('.ngpush-block').each(function(){
+	var id = $(this).attr('id');
+	$(this).find('th').click(function(){
+		$('#' + id).find('.account-body').toggle().toggleClass('account-body-active');
 	});
 });
 
-jQuery('#ngpush-list .block input.push-all').click(function(){
-	jQuery('#ngpush-list .account-body.active').each(function(){
-		var account_id = jQuery(this).find('input.ngpush-account-id').val();
-		var account_type = jQuery(this).find('input.ngpush-account-type').val();
+$('#ngpush-list .block input.push-all').click(function(){
+	$('#ngpush-list .account-body-active').each(function(){
+		var account_id = $(this).find('input.ngpush-account-id').val();
+		var account_type = $(this).find('input.ngpush-account-type').val();
 		ngpush_process_account(account_type, account_id);
 	});
 });
 
-jQuery('#ngpush-list .account-body form input.push').click(function(){
-	var account_id = jQuery(this).parents('form').find('input.ngpush-account-id').val();
-	var account_type = jQuery(this).parents('form').find('input.ngpush-account-type').val();
+$('#ngpush-list .account-body form input.push').click(function(){
+	var account_id = $(this).parents('form').find('input.ngpush-account-id').val();
+	var account_type = $(this).parents('form').find('input.ngpush-account-type').val();
 	ngpush_process_account(account_type, account_id);
 });
 
