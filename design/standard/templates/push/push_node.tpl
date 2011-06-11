@@ -4,7 +4,7 @@
 	$push_blocks = ezini('PushNodeSettings', 'Blocks', 'ngpush.ini')
 	$active_blocks = ezini('PushNodeSettings', 'ActiveBlocks', 'ngpush.ini')
 	$SiteURL = ezini('PushNodeSettings', 'SiteURL', 'ngpush.ini')
-	$NodeURL = concat('http://', $SiteURL, '/', $node.url_alias)
+	$NodeURL = concat('http://', $SiteURL, '/', $url_alias)
 	$bitly_login = ezini('bitly', 'login', 'ngpush.ini')
 	$bitly_apikey = ezini('bitly', 'apikey', 'ngpush.ini')
 	$facebook_appid = ezini('bitly', 'apikey', 'ngpush.ini')
@@ -36,7 +36,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 		'Type', ezini($entry, 'Type', 'ngpush.ini'),
 		'Name', ezini($entry, 'Name', 'ngpush.ini')
 	)}
-	
+
 	{switch match=$account.Type}
 		{case match='twitter'}
 			{set $account = hash(
@@ -46,7 +46,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 													and(ezini_hasvariable($entry, 'attrId_status', 'ngpush.ini'), ezini($entry, 'attrId_status', 'ngpush.ini')[$node.class_identifier]),
 													$node.data_map[ezini($entry, 'attrId_status', 'ngpush.ini')[$node.class_identifier]].content|wash)
 			)}
-			
+
 			<table cellspacing="0" class="list ngpush-block type-{$account.Type}" id="ngpush-{$entry}">
 				<thead>
 					<tr>
@@ -63,7 +63,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 									<div class="message">{"Waiting..."|i18n("ngpush/status")}</div>
 									<div class="control"></div>
 								</div>
-								
+
 								<form action="" class="form">
 									<p>
 										<label class="maxlength">{"You have %number characters remaining."|i18n("ngpush/status", "", hash("%number", "<span>140</span>"))}</label>
@@ -79,7 +79,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 										<input class="button" type="reset" value="Reset" />
 									</p>
 								</form>
-								
+
 							</div>
 						</td>
 					</tr>
@@ -105,7 +105,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 				'fb_picture',			cond(
 														and(ezini_hasvariable($entry, 'attrId_picture', 'ngpush.ini'), ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]),
 														concat('http://',$SiteURL,'/content/download/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].contentobject_id,'/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].id,'/file/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content.original_filename)),
-				'fb_link',				concat('http://', $SiteURL, '/', $node.url_alias)
+				'fb_link',				$NodeURL
 			)}
 			<table cellspacing="0" class="list ngpush-block type-{$account.Type}" id="ngpush-{$entry}">
 				<thead>
@@ -123,7 +123,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 									<div class="message">{"Waiting..."|i18n("ngpush/status")}</div>
 									<div class="control"></div>
 								</div>
-								
+
 								<form action="">
 									<p>
 										<label><input name="fb_name" type="checkbox" checked="checked" /><strong>Name</strong></label>
@@ -158,14 +158,14 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 										<input class="button" type="reset" value="Reset" />
 									</p>
 								</form>
-								
+
 							</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		{/case}
-		
+
 	{/switch}
 {/foreach}
 

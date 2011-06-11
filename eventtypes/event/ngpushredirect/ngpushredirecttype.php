@@ -13,14 +13,21 @@ class ngPushRedirectType extends eZWorkflowEventType
     {
         $processParameters = $process->attribute( 'parameter_list' );
         $object  = eZContentObject::fetch( $processParameters['object_id'] );
+
         $node = $object->mainNode();
+		$href = '/push/node/' . $node->attribute( 'node_id' );
 
-		$href = '/push/node/' . $node->NodeID;
-		eZURI::transformURI(& $href, false, 'full');
+		$version = eZContentObjectVersion::fetchVersion( $processParameters['version'], $processParameters['object_id'] );
+		if ( $version instanceof eZContentObjectVersion )
+		{
+			$language = eZContentLanguage::fetch( $version->attribute( 'initial_language_id' ) );
+			if ( $language instanceof eZContentLanguage )
+				$href .= '/' . $language->attribute( 'locale' );
+		}
 
+		eZURI::transformURI($href, false, 'full');
 		$http = eZHTTPTool::instance();
 		$http->setSessionVariable( 'RedirectURIAfterPublish', $href );
-
         return eZWorkflowType::STATUS_ACCEPTED;
     }
 }

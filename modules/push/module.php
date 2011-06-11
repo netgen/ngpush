@@ -6,7 +6,7 @@ $ViewList = array();
 
 $ViewList['node'] = array(
 	'script'	=> 'push_node.php',
-	'params'	=> array( 'NodeID' )
+	'params'	=> array( 'NodeID', 'LanguageCode' )
 );
 
 $ViewList['save_access_token'] = array(
