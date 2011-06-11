@@ -32,3 +32,12 @@ Installation
  4. Clear caches
 
     Clear template, override and ini caches (from admin 'Setup' tab or from command line).
+
+ 5. Pushing nodes
+
+    - You can push the nodes in two ways.
+      1) Clicking on a node in administration tree and selecting "Push" option
+      2) Activating after publish trigger and setting it to run (among other
+         events, if you have them) "Netgen Push Redirect" workflow event, which
+         takes care of redirecting you to Netgen Push interface after publishing
+         your object
