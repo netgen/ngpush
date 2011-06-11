@@ -24,8 +24,19 @@ $.ajax({
 	complete: function(xhr, status) {}
 });
 
+$('ul.hashtags li a').click(function(){
+	var hashtag = ' ' + $(this).text();
+	var textarea = $(this).parents('.ngpush-block').find('textarea').get(0);
+	var startPos = textarea.selectionStart;
+	var endPos = textarea.selectionEnd;
+	textarea.value = textarea.value.substring(0, startPos) + hashtag + textarea.value.substring(endPos, textarea.value.length);
+	textarea.selectionStart = textarea.selectionEnd = startPos + hashtag.length;
+	maxlength(textarea);
+	return false;
+});
+
 $('input.insert-link').click(function(){
-	var url = ($(this).attr('name') == 'short' ? ngpush_node_url_short : ngpush_node_url_full);
+	var url = ' ' + ($(this).attr('name') == 'short' ? ngpush_node_url_short : ngpush_node_url_full);
 	var textarea = $(this).parents('.ngpush-block').find('textarea').get(0);
 	var startPos = textarea.selectionStart;
 	var endPos = textarea.selectionEnd;

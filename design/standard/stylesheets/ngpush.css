@@ -20,7 +20,8 @@ form p:last-child {margin-bottom:0;}
 div#ngpush-list table.ngpush-block thead th.icon {width:23px; padding-left:6px;}
 div#ngpush-list table.ngpush-block tbody td {padding:0;}
 
-
+div#ngpush-list .ngpush-block ul.hashtags {list-style-type:none;margin-left:0px;display:inline;}
+div#ngpush-list .ngpush-block ul.hashtags li {display:inline;padding-right:5px;}
 
 div#ngpush-list .ngpush-block {margin-bottom:10px;}
 div#ngpush-list .ngpush-block th {cursor:pointer;}

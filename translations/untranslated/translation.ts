@@ -31,6 +31,10 @@
 <context>
 	<name>ngpush/ui</name>
 	<message>
+		<source>Insert hashtags</source>
+		<translation type="unfinished"></translation>
+	</message>
+	<message>
 		<source>Insert full link</source>
 		<translation type="unfinished"></translation>
 	</message>

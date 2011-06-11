@@ -34,9 +34,44 @@ if ( $foundInRequestedLanguage )
 	eZContentLanguage::setPrioritizedLanguages( $originalPrioritizedLanguages );
 }
 
+$tagsArray = array();
+$keywordArray = array();
+
+foreach ( $node->dataMap() as $objectAttribute )
+{
+	if ( $objectAttribute->hasContent() )
+	{
+		if ( $objectAttribute->attribute( 'data_type_string' ) == 'eztags' )
+		{
+			$keywords = str_replace( ' ', '', $objectAttribute->content()->keywordString() );
+			$keywords = explode( '|#', $keywords );
+			if ( is_array( $keywords ) && !empty( $keywords ) )
+				$tagsArray = array_merge( $tagsArray, $keywords );
+		}
+		else if ( $objectAttribute->attribute( 'data_type_string' ) == 'ezkeyword' )
+		{
+			$keywords = implode( ',', $objectAttribute->content()->KeywordArray );
+			$keywords = str_replace( ' ', '', $keywords );
+			$keywords = explode( ',', $keywords );
+			if ( is_array( $keywords ) && !empty( $keywords ) )
+				$keywordArray = array_merge( $keywordArray, $keywords );
+		}
+	}
+}
+
+$tagsArray = array_values( array_unique( $tagsArray ) );
+$keywordArray = array_values( array_unique( $keywordArray ) );
+
 $tpl = eZTemplate::factory();
 $tpl->setVariable( 'node', $node );
 $tpl->setVariable( 'url_alias', $urlAlias );
+
+if ( !empty( $tagsArray ) )
+	$tpl->setVariable( 'hashtags', $tagsArray );
+else if ( !empty( $keywordArray ) )
+	$tpl->setVariable( 'hashtags', $keywordArray );
+else
+	$tpl->setVariable( 'hashtags', array() );
 
 $Result = array();
 $Result['pagelayout'] = true;

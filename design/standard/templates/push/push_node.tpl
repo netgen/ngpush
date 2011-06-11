@@ -13,9 +13,19 @@
 	$account = false()
 	$attrId_title = false()
 	$attrId_description = false()
-	$attrId_image = false()}
-{if $push_blocks}
+	$attrId_image = false()
+	$is_admin = true()
+}
 
+{* really the best way to detect if we're running in admin siteaccess *}
+{if and(ezini('DesignSettings', 'SiteDesign')|ne('admin'), ezini('DesignSettings', 'SiteDesign')|ne('admin2'),
+		ezini('DesignSettings', 'AdditionalSiteDesignList')|contains('admin')|not,
+		ezini('DesignSettings', 'AdditionalSiteDesignList')|contains('admin2')|not)}
+	{set $is_admin = false()}
+	{set $NodeURL = $url_alias|ezurl(no, full)}
+{/if}
+
+{if $push_blocks}
 {ezcss_require(array('ngpush.css'))}
 {ezscript_require(array('json2.js','ngpush.js'))}
 
@@ -69,6 +79,16 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 										<label class="maxlength">{"You have %number characters remaining."|i18n("ngpush/status", "", hash("%number", "<span>140</span>"))}</label>
 										<textarea rows="1" cols="80" name="tw_status" spellcheck="false" class="maxlength maxlength-140">{$account.tw_status}</textarea>
 									</p>
+									{if $hashtags|count}
+										<div>
+											<span>{"Insert hashtags"|i18n("ngpush/ui")}:</span>
+											<ul class="hashtags">
+												{foreach $hashtags as $hashtag}
+													<li><a href="#">#{$hashtag}</a></li>
+												{/foreach}
+											</ul>
+										</div>
+									{/if}
 									<p>
 										<input class="ngpush-account-id" type="hidden" value="{$entry}" />
 										<input class="ngpush-account-type" type="hidden" value="{$account.Type}" />
@@ -104,7 +124,8 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 														$node.data_map[ezini($entry, 'attrId_message', 'ngpush.ini')[$node.class_identifier]].content.output.output_text|ngpush_xml_clean),
 				'fb_picture',			cond(
 														and(ezini_hasvariable($entry, 'attrId_picture', 'ngpush.ini'), ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]),
-														concat('http://',$SiteURL,'/content/download/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].contentobject_id,'/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].id,'/file/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content.original_filename)),
+														cond($is_admin|not, concat('/content/download/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].contentobject_id,'/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].id,'/file/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content.original_filename)|ezurl(no, full),
+															concat('http://',$SiteURL,'/content/download/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].contentobject_id,'/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].id,'/file/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content.original_filename))),
 				'fb_link',				$NodeURL
 			)}
 			<table cellspacing="0" class="list ngpush-block type-{$account.Type}" id="ngpush-{$entry}">
