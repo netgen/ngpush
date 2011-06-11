@@ -156,7 +156,7 @@ class TwitterOAuth {
   function post($url, $parameters = array()) {
     $response = $this->oAuthRequest($url, 'POST', $parameters);
     if ($this->format === 'json' && $this->decode_json) {
-      return json_decode($response, true);
+      return json_decode($response);
     }
     return $response;
   }
