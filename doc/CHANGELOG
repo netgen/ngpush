@@ -1,0 +1,21 @@
+Netgen Push extension changelog
+
+1.1 (11.06.2011)
+==========================
+
+* Now detects language in which was object edited and fills input fields accordingly
+
+* Fix not working "Push to all services" button
+
+* Fixed some potential conflicts with extensions that also used twitteroauth.php library
+
+* eZ Tags and eZ Keyword integration. If object being pushed has content in one of those
+  attributes, they will be listed in push interface and can be added as hashtags into
+  Twitter status update
+
+
+
+1.0 (16.11.2010)
+==========================
+
+* Initial release
