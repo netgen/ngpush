@@ -123,7 +123,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 														and(ezini_hasvariable($entry, 'attrId_message', 'ngpush.ini'), ezini($entry, 'attrId_message', 'ngpush.ini')[$node.class_identifier]),
 														$node.data_map[ezini($entry, 'attrId_message', 'ngpush.ini')[$node.class_identifier]].content.output.output_text|ngpush_xml_clean),
 				'fb_picture',			cond(
-														and(ezini_hasvariable($entry, 'attrId_picture', 'ngpush.ini'), ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]),
+														and(ezini_hasvariable($entry, 'attrId_picture', 'ngpush.ini'), ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier], $node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].has_content),
 														cond($is_admin|not, concat('/content/download/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].contentobject_id,'/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].id,'/file/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content.original_filename)|ezurl(no, full),
 															concat('http://',$SiteURL,'/content/download/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].contentobject_id,'/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].id,'/file/',$node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content.original_filename))),
 				'fb_link',				$NodeURL
