@@ -1,7 +1,9 @@
 Netgen Push extension changelog
 
-1.1 (11.06.2011)
+1.1 (13.06.2011)
 ==========================
+
+* Use eZClusterFileHandler instead of directly writing/reading to/from disk
 
 * Now detects language in which was object edited and fills input fields accordingly
 
@@ -13,6 +15,11 @@ Netgen Push extension changelog
   attributes, they will be listed in push interface and can be added as hashtags into
   Twitter status update
 
+* Added website toolbar icon for node pushing
+
+* Translations support
+
+* General bugfixes and small changes all around
 
 
 1.0 (16.11.2010)
