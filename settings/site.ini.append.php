@@ -13,4 +13,7 @@ CacheItems[]=ngpush
 name=Netgen Push authorization cache
 id=ngpush
 path=ngpush
+
+[RegionalSettings]
+TranslationExtensions[]=ngpush
 */ ?>

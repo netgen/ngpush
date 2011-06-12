@@ -34,11 +34,11 @@ switch ($Params['Case']) {
 
 if ( $saveStatus )
 {
-	$message = 'Access token has been successfully obtained and saved.<br />You can continue using your Netgen Push application.';
+	$message = ezpI18n::tr( 'ngpush/ui', 'Access token has been successfully obtained and saved.%brYou can continue using your Netgen Push application.', null, array( '%br' => '<br />' ) );
 }
 else
 {
-	$message = 'An error has occured.<br />Your access token could not be saved, please contact your Netgen Push administrator.';
+	$message = ezpI18n::tr( 'ngpush/ui', 'An error has occured.%brYour access token could not be saved, please contact your Netgen Push administrator.', null, array( '%br' => '<br />' ) );
 }
 
 $tpl = eZTemplate::factory();

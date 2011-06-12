@@ -54,5 +54,17 @@
 		<source>Push to all services</source>
 		<translation type="unfinished"></translation>
 	</message>
+	<message>
+		<source>Access token has been successfully obtained and saved.%brYou can continue using your Netgen Push application.</source>
+		<translation type="unfinished"></translation>
+	</message>
+	<message>
+		<source>An error has occured.%brYour access token could not be saved, please contact your Netgen Push administrator.</source>
+		<translation type="unfinished"></translation>
+	</message>
+	<message>
+		<source>Close this window</source>
+		<translation type="unfinished"></translation>
+	</message>
 </context>
 </TS>

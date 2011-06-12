@@ -54,5 +54,17 @@
 		<source>Push to all services</source>
 		<translation>Objavi na sve servise</translation>
 	</message>
+	<message>
+		<source>Access token has been successfully obtained and saved.%brYou can continue using your Netgen Push application.</source>
+		<translation>Token je uspješno dohvaćen i spremljen.%brMožete nastaviti koristiti Netgen Push.</translation>
+	</message>
+	<message>
+		<source>An error has occured.%brYour access token could not be saved, please contact your Netgen Push administrator.</source>
+		<translation>Dogodila se greška.%brToken nije moguće spremiti, kontaktirajte vašeg administratora.</translation>
+	</message>
+	<message>
+		<source>Close this window</source>
+		<translation>Zatvori prozor</translation>
+	</message>
 </context>
 </TS>

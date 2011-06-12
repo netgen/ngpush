@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr-HR" lang="hr-HR"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr-HR" lang="hr-HR">
 <head>
 
 <title>Netgen Push - Message</title>
@@ -12,17 +12,17 @@
 <meta name="keywords" content="social networks, facebook, ezpublish, netgen" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 
-<link rel="Shortcut icon" href="/extension/ezflow_netgen/design/ezflow_netgen/images/favicon.ico" type="image/x-icon" />
+<link rel="Shortcut icon" href={"favicon.ico"|ezimage} type="image/x-icon" />
 
 <style type="text/css">
 body {ldelim}font-family:arial; font-size:18px;{rdelim}
 </style>
 
-</head> 
+</head>
 <body>
 
 <p>{$message}</p>
-<p><a href="#" onclick="window.close()">Close this window</a></p>
-
-</body> 
+<p><a href="#" onclick="window.close()">{'Close this window'|i18n('ngpush/ui')}</a></p>
+<!--DEBUG_REPORT-->
+</body>
 </html>
