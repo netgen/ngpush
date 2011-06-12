@@ -38,7 +38,7 @@ if ( $saveStatus )
 }
 else
 {
-	$message = 'An error has occured.<br />Your Your access token could not be saved, please contact your Netgen Push administrator.';
+	$message = 'An error has occured.<br />Your access token could not be saved, please contact your Netgen Push administrator.';
 }
 
 $tpl = eZTemplate::factory();
