@@ -9,7 +9,7 @@ class ngPushBase
 	//Base error structure
 	protected static $response = array('status' => NULL, 'messages' => array(), 'response' => NULL);
 
-	public function load_token( $Account, $TokenSuffix = false )
+	public static function load_token( $Account, $TokenSuffix = false )
 	{
 		$ngpush_cache = eZSys::cacheDirectory() . ( self::ngpush_cache_dir ? '/' . self::ngpush_cache_dir : '' );
 		$token_file = ( self::token_prefix ? '_' . self::token_prefix : '' ) . $Account . ( $TokenSuffix ? '_' . $TokenSuffix : '' ) . '.txt';
@@ -17,7 +17,7 @@ class ngPushBase
 		return file_get_contents( $ngpush_cache . '/' . $token_file );
 	}
 
-	public function save_token( $SettingsBlock, $Token, $TokenSuffix = false )
+	public static function save_token( $SettingsBlock, $Token, $TokenSuffix = false )
 	{
 		$ngpush_cache = eZSys::cacheDirectory() . (self::ngpush_cache_dir ? '/' . self::ngpush_cache_dir : '');
 		if ( !file_exists( $ngpush_cache ) ) mkdir( $ngpush_cache );
