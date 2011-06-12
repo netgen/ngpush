@@ -22,8 +22,10 @@ class ngPushTwitterBase extends ngPushBase
 
 		$connection = new TwitterOAuth( $ConsumerKey, $ConsumerSecret );
 
-		$AdministrationUrl						= base64_encode( 'http://' . $SiteIni->variable('SiteSettings', 'SiteURL' ) );
-		$SettingsBlock							= base64_encode( $Account );
+		$AdministrationUrl = '/';
+		eZURI::transformURI( $AdministrationUrl, false, 'full' );
+		$AdministrationUrl = base64_encode( $AdministrationUrl );
+		$SettingsBlock = base64_encode( $Account );
 
 		$temporary_credentials	= $connection->getRequestToken( 'http://' . $NGPushIni->variable( 'PushNodeSettings', 'ConnectURL' ) . '/redirect.php/' . $AdministrationUrl . '/' . $SettingsBlock . '?case=twitter' );
 

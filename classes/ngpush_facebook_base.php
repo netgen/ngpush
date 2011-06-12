@@ -64,8 +64,11 @@ class ngPushFacebookBase extends ngPushBase
 		if ( $NGPushIni->variable( $Account, 'EntityType' ) == 'page' ) $Permissions[] =
 			'manage_pages';
 
-		$AdministrationUrl	= base64_encode('http://' . $SiteIni->variable( 'SiteSettings', 'SiteURL' ) );
-		$SettingsBlock		= base64_encode( $Account );
+		$AdministrationUrl = '/';
+		eZURI::transformURI( $AdministrationUrl, false, 'full' );
+		$AdministrationUrl = base64_encode( $AdministrationUrl );
+		$SettingsBlock = base64_encode( $Account );
+
 		$LoginUrl = $Facebook->getLoginUrl( array(
 			'cancel_url'	=> 'http://' . $NGPushIni->variable( 'PushNodeSettings', 'ConnectURL' ) . '/cancel.php',
 			'next'			=> 'http://' . $NGPushIni->variable( 'PushNodeSettings', 'ConnectURL' ) . '/redirect.php/' . $AdministrationUrl . '/' . $SettingsBlock . '?case=facebook',
