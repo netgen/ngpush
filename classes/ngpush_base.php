@@ -12,21 +12,25 @@ class ngPushBase
 	public static function load_token( $Account, $TokenSuffix = false )
 	{
 		$ngpush_cache = eZSys::cacheDirectory() . ( self::ngpush_cache_dir ? '/' . self::ngpush_cache_dir : '' );
-		$token_file = ( self::token_prefix ? '_' . self::token_prefix : '' ) . $Account . ( $TokenSuffix ? '_' . $TokenSuffix : '' ) . '.txt';
+		$token_file = $ngpush_cache . '/' . ( self::token_prefix ? '_' . self::token_prefix : '' ) . $Account . ( $TokenSuffix ? '_' . $TokenSuffix : '' ) . '.txt';
 
-		return file_get_contents( $ngpush_cache . '/' . $token_file );
+		$fileHandler = eZClusterFileHandler::instance( $token_file );
+		return $fileHandler->fetchContents();
 	}
 
 	public static function save_token( $SettingsBlock, $Token, $TokenSuffix = false )
 	{
 		$ngpush_cache = eZSys::cacheDirectory() . (self::ngpush_cache_dir ? '/' . self::ngpush_cache_dir : '');
-		if ( !file_exists( $ngpush_cache ) ) mkdir( $ngpush_cache );
+		$token_file = $ngpush_cache . '/' . ( self::token_prefix ? '_' . self::token_prefix : '' ) . $SettingsBlock . ( $TokenSuffix ? '_' . $TokenSuffix : '' ) . '.txt';
 
-		$handle = fopen( $ngpush_cache . '/' . ( self::token_prefix ? '_' . self::token_prefix : '' ) . $SettingsBlock . ( $TokenSuffix ? '_' . $TokenSuffix : '' ) . '.txt', 'w' );
-		$status = fwrite( $handle, $Token );
-		fclose( $handle );
+		$fileHandler = eZClusterFileHandler::instance( $token_file );
+		$fileHandler->storeContents( $Token );
 
-		return $status;
+		$storedToken = $fileHandler->fetchContents();
+		if ( $storedToken !== false )
+			return true;
+
+		return false;
 	}
 
 	//Workaround for PHP CURL redirect security restrictions (when using open_basedir and/or safe_mode)
