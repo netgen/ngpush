@@ -353,37 +353,34 @@ class Facebook
   }
 
   /**
-   * Get a Login URL for use with redirects. By default, full page redirect is
-   * assumed. If you are using the generated URL with a window.open() call in
-   * JavaScript, you can pass in display=popup as part of the $params.
+   * Get a Login URL for use with redirects.
+   * By default, full page redirect is assumed.
    *
    * The parameters:
-   * - next: the url to go to after a successful login
-   * - cancel_url: the url to go to after the user cancels
-   * - req_perms: comma separated list of requested extended perms
-   * - display: can be "page" (default, full page) or "popup"
+   * - client_id: The URL to go to after a successful login
+   * - redirect_uri: The URL to go to
+   * - state: An arbitrary but unique string that will be returned
+   *          at the end of the login flow. It allows the app to protect
+   *          against Cross-Site Request Forgery.
+   * - scope: Comma separated list of requested extended permissions
    *
-   * @param Array $params provide custom parameters
+   * @param Array $params parameters to override
    * @return String the URL for the login flow
    */
   public function getLoginUrl($params=array()) {
     $currentUrl = $this->getCurrentUrl();
     return $this->getUrl(
       'www',
-      'login.php',
+      'dialog/oauth',
       array_merge(array(
-        'api_key'         => $this->getAppId(),
-        'cancel_url'      => $currentUrl,
-        'display'         => 'page',
-        'fbconnect'       => 1,
-        'next'            => $currentUrl,
-        'return_session'  => 1,
-        'session_version' => 3,
-        'v'               => '1.0',
+        'client_id'     => $this->getAppId(),
+        'redirect_uri'  => $currentUrl,
+        'state'         => md5(uniqid(rand(), true)),
+        'scope'         => ''
       ), $params)
     );
   }
-
+  
   /**
    * Get a Logout URL suitable for use with redirects.
    *
