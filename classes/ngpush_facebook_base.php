@@ -64,7 +64,6 @@ class ngPushFacebookBase extends ngPushBase
         }
         else // Request tokens with oAuth
         {
-
             $AdministrationUrl = '/';
             eZURI::transformURI( $AdministrationUrl, false, 'full' );
             $AdministrationUrl = base64_encode( $AdministrationUrl );
@@ -78,8 +77,7 @@ class ngPushFacebookBase extends ngPushBase
 
             $Permissions = array(
                     'publish_stream', // Or 'publish_actions'
-                    'read_stream',
-                    'offline_access' );
+                    'read_stream' );
 
             if ( $NGPushIni->variable( $Account, 'EntityType' ) == 'page' )
             {
