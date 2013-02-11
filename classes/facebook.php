@@ -357,8 +357,8 @@ class Facebook
    * By default, full page redirect is assumed.
    *
    * The parameters:
-   * - client_id: The URL to go to after a successful login
-   * - redirect_uri: The URL to go to
+   * - client_id: Facebook application ID
+   * - redirect_uri: The URL to go to after a successful login
    * - state: An arbitrary but unique string that will be returned
    *          at the end of the login flow. It allows the app to protect
    *          against Cross-Site Request Forgery.
@@ -380,7 +380,7 @@ class Facebook
       ), $params)
     );
   }
-  
+
   /**
    * Get a Logout URL suitable for use with redirects.
    *
