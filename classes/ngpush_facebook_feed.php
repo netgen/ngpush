@@ -6,23 +6,36 @@ class ngPushFacebookFeed extends ngPushFacebookBase
 	{
 		$NGPushIni = eZINI::instance( 'ngpush.ini' );
 		$MakeToken = false;
-
-		if ($Token = self::getToken($Account)) {
+                
+                $Token = self::getToken( $Account );
+                
+                if ( !$Token )
+		{
+                    self::requestToken( $Account );
+                    $Token = self::getToken( $Account );
+		}
+                
+		if ( $Token )
+		{
 			$postfields = 'access_token=' . $Token;
-			
+                        
 			foreach($Arguments as $Name => $Value) {
 				$postfields .= ($Value ? '&' . $Name . '=' . $Value : '');
 			}
+                        
+                        $pageId = $NGPushIni->variable($Account, 'Id');
 
+                        $url = 'https://graph.facebook.com/' . $pageId . '/feed';
+                        
 			$options = array(
-				CURLOPT_URL				=> 'https://graph.facebook.com/' . $NGPushIni->variable($Account, 'Id') . '/feed',
-				CURLOPT_USERAGENT		=> self::useragent,
+				CURLOPT_URL		=> $url,
+				CURLOPT_USERAGENT	=> self::useragent,
 				CURLOPT_RETURNTRANSFER	=> true,
-				CURLOPT_HEADER			=> 0,
-				CURLOPT_POST			=> 1,
-				CURLOPT_POSTFIELDS		=> $postfields
+				CURLOPT_HEADER		=> 0,
+				CURLOPT_POST		=> 1,
+				CURLOPT_POSTFIELDS	=> $postfields
 			);
-			
+                        
 			$ch = curl_init($url);
 			curl_setopt_array($ch, $options);
 			

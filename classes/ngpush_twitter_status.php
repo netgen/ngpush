@@ -5,9 +5,16 @@ class ngPushTwitterStatus extends ngPushTwitterBase
 	public function push( $Account, $TwitterStatus )
 	{
 		$NGPushIni = eZINI::instance( 'ngpush.ini' );
-		$MakeToken = false;
 
-		if ( $Token = self::getToken( $Account ) )
+                $Token = self::getToken( $Account );
+                
+                if ( !$Token )
+		{
+                    self::requestToken( $Account );
+                    $Token = self::getToken( $Account );
+		}
+                
+		if ( $Token )
 		{
 			$tokenCredentials = explode( '%%%', $Token );
 			$connection = new TwitterOAuth(
@@ -49,11 +56,6 @@ class ngPushTwitterStatus extends ngPushTwitterBase
 		{
 			self::$response['status'] = 'error';
 			self::$response['messages'][] = 'You need access token to use this application with Twitter.';
-		}
-
-		if ( !$Token || $MakeToken )
-		{
-			self::requestToken( $Account );
 		}
 
 		return self::$response;
