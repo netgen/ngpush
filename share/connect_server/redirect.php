@@ -15,7 +15,7 @@ switch ($_GET['case']) {
         }
         else if ( $_GET['code'] )
         {
-            $access_token   = base64_encode($_GET['code']);
+            $access_token   = base64_encode($_GET['state'] . "%%%" . $_GET['code']);
             $case = "facebook_oauth";
         }
         break;

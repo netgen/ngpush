@@ -375,7 +375,6 @@ class Facebook
       array_merge(array(
         'client_id'     => $this->getAppId(),
         'redirect_uri'  => $currentUrl,
-        'state'         => md5(uniqid(rand(), true)),
         'scope'         => ''
       ), $params)
     );

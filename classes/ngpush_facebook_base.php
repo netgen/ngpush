@@ -84,9 +84,14 @@ class ngPushFacebookBase extends ngPushBase
                 $Permissions[] = 'manage_pages';
             }
 
+            $state = md5(uniqid(rand(), true));
+            $http = eZHTTPTool::instance();
+            $http->setSessionVariable( 'ngpush_state', $state );
+
             $LoginUrl = $Facebook->getLoginUrl( array(
                     'redirect_uri'  => $redirectUrl,
-                    'scope'         => implode( $Permissions, ',' )
+                    'scope'         => implode( $Permissions, ',' ),
+                    'state'         => $state
             ));
 
             self::$response['RequestPermissionsUrl'] = $LoginUrl;

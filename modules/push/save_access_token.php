@@ -28,6 +28,12 @@ switch ($Params['Case']) {
         $saveStatus = ngPushBase::save_token( $settingsBlock, $accessToken, 'main_token' );
         break;
     case 'facebook_oauth':
+        $accessToken = explode( '%%%', $accessToken );
+
+        $http = eZHTTPTool::instance();
+        if ( $accessToken[0] != $http->sessionVariable( 'ngpush_state', '' ) )
+            break;
+
         $AdministrationUrl = '/';
         eZURI::transformURI( $AdministrationUrl, false, 'full' );
         $AdministrationUrl = base64_encode( $AdministrationUrl );
@@ -36,7 +42,7 @@ switch ($Params['Case']) {
 
          $token_url = "https://graph.facebook.com/oauth/access_token?"
            . "client_id=" . $NGPushIni->variable( $settingsBlock, 'AppId') . "&redirect_uri=" . urlencode($redirectUrl)
-           . "&client_secret=" . $NGPushIni->variable( $settingsBlock, 'AppSecret') . "&code=" . $accessToken;
+           . "&client_secret=" . $NGPushIni->variable( $settingsBlock, 'AppSecret') . "&code=" . $accessToken[1];
 
          $response = file_get_contents($token_url);
          $params = null;
