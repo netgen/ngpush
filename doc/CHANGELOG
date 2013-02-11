@@ -1,5 +1,13 @@
 Netgen Push extension changelog
 
+1.2 (11.12.2013)
+==========================
+
+* Implement new Facebook authentification API
+
+* Feature to read Twitter & Facebook tokens from files (thanks to Vincent Robic)
+
+
 1.1 (13.06.2011)
 ==========================
 
