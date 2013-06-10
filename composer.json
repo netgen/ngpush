@@ -1,0 +1,16 @@
+{
+    "name": "netgen/ngpush",
+    "description": "Netgen Push provides a simple and effective way to push any kind of content from eZ Publish to various social networks.",
+    "type": "ezpublish-legacy-extension",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Netgen",
+            "email": "info@netgen.hr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ezsystems/ezpublish-legacy-installer": "*"
+    }
+}
