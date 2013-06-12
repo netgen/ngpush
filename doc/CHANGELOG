@@ -1,5 +1,11 @@
 Netgen Push extension changelog
 
+1.3 (12.06.2013)
+==========================
+
+* Implement new Twitter v1.1 authentification API (thanks to Hrvoje Knežević)
+
+
 1.2 (11.12.2013)
 ==========================
 
