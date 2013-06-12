@@ -33,6 +33,7 @@ class ngPushTwitterBase extends ngPushBase
         else // Request tokens with oAuth
         {
             $connection = new TwitterOAuth( $ConsumerKey, $ConsumerSecret );
+            $connection->host = "https://api.twitter.com/1.1/";
 
             $AdministrationUrl = '/';
             eZURI::transformURI( $AdministrationUrl, false, 'full' );
