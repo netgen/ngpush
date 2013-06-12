@@ -22,6 +22,7 @@ class ngPushTwitterStatus extends ngPushTwitterBase
                 $NGPushIni->variable( $Account, 'ConsumerSecret' ),
                 $tokenCredentials[0],
                 $tokenCredentials[1] );
+            $connection->host = "https://api.twitter.com/1.1/";
 
             $TwitterResponse = $connection->post( 'statuses/update', array( 'status' => $TwitterStatus ) );
 
