@@ -163,7 +163,7 @@ var ngpush_text_maxlength_error = "{"Message is too long!"|i18n("ngpush/status")
 									<p>
 										<label><input name="fb_picture" type="checkbox" checked="checked" /><strong>Picture</strong></label>
 										<input name="fb_picture" type="hidden" value="{$account.fb_picture}" />
-										<img src="{concat("/", $node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content['small'].url)}" alt="" />
+										<img src="{concat("/", $node.data_map[ezini($entry, 'attrId_picture', 'ngpush.ini')[$node.class_identifier]].content['ngpushthumb'].url)}" alt="" />
 									</p>
 									{/if}
 									<p>
