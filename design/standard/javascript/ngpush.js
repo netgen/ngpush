@@ -123,7 +123,7 @@ function ngpush_process_account(account_type, account_id) {
 				if (fb.error) {
 					
 					jQuery('#ngpush-' + account_id).find('.status .message').html(fb.error.type + ': ' + fb.error.message);
-					jQuery('#ngpush-' + account_id).find('.status .control').html('<a href="#" onclick="var mywindow = window.open(\'https://graph.facebook.com/oauth/authorize?redirect_uri=http://demo43.netgen.biz&client_id=' + facebook_appid + '&scope=' + (facebook_entitytype == 'page' ? 'manage_pages%2C' : '') + 'publish_stream\',\'mywindow\',\'location=0,status=0,scrollbars=0,width=990,height=640\');mywindow.moveTo(0,0); return false;">authorize</a>');
+					jQuery('#ngpush-' + account_id).find('.status .control').html('<a href="#" onclick="var mywindow = window.open(\'https://graph.facebook.com/oauth/authorize?redirect_uri=http://demo43.netgen.biz&client_id=' + facebook_appid + '&scope=' + (facebook_entitytype == 'page' ? 'manage_pages%2C' : '') + 'publish_actions\',\'mywindow\',\'location=0,status=0,scrollbars=0,width=990,height=640\');mywindow.moveTo(0,0); return false;">authorize</a>');
 					
 					jQuery('#ngpush-' + account_id).find('.status .message').html(fb.error.message);
 					jQuery('#ngpush-' + account_id).find('.status .indicator div').removeClass().addClass('indicator-error');

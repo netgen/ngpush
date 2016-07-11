@@ -76,8 +76,8 @@ class ngPushFacebookBase extends ngPushBase
                 'secret'		=> $NGPushIni->variable( $Account, 'AppSecret' ) ) );
 
             $Permissions = array(
-                    'publish_stream', // Or 'publish_actions'
-                    'read_stream' );
+                    'publish_actions', // Or 'publish_actions'
+                    'user_posts' );
 
             if ( $NGPushIni->variable( $Account, 'EntityType' ) == 'page' )
             {
